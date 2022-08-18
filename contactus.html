@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<?php
+	$message_sent = false;
+	if(isset($_POST['email']) && $_POST['email'] != ''){
+
+		if( filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) ){
+
+			$userName = $_POST['name'];
+			$userEmail = $_POST['email'];
+			$message = $_POST['message'];
+			$messageMark = $_POST['mark'];
+
+			$to = "troy_a_w_easson@outlook.com";
+			$body = "";
+
+			$body .= "From: ".$userName. "\r\n";
+			$body .= "Email: ".$userEmail. "\r\n";
+			$body .= "Message: ".$message. "\r\n";
+			$body .= "Marketing: ".$messageMark. "\r\n";
+
+			mail($to, $subject, $body):
+
+			$message_sent = true;
+		}
+	}
+?>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="images/LMRCupsc-removebg2.png">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Beau+Rivage&display=swap" rel="stylesheet">
+	<link href='//fonts.googleapis.com/css?family=Signika+Negative:300,400,600' rel='stylesheet' type='text/css'>
+  	<link rel="stylesheet" type="text/css" href="CSS/contact.css">
+	<title>Largs Model Boat Club | Contact Us</title>
+</head>
+
+<body>
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-dark">
+	  		<div class="container-fluid">
+	  			<h1>Largs Model Boat Club</h1>
+	    		<a class="navbar-brand" href="index.html"><img src="images/LMRCupsc-removebg2.png" alt="Largs Model Boat Club Logo" style="width:200px;"></a>
+	    		<ul class="navbar-nav">
+				      <li class="nav-item">
+				        <a class="nav-link" href="gallery.html">Gallery</a>
+				      </li>
+				      <li class="nav-item">
+				        <a class="nav-link" href="news.html">News & Events</a>
+				      </li>
+				      <li class="nav-item">
+				        <a class="nav-link" href="aboutlargs.html">About Largs</a>
+				      </li>
+				      <li class="nav-item">
+				        <a class="nav-link active" href="contactus.php">Contact Us</a>
+				      </li>
+				      <li class="nav-item">
+				        <a class="nav-link" href="index.html">Home</a>
+				      </li>
+			    </ul>
+	  		</div>
+		</nav>
+	</header>
+
+<main>
+	<?php
+		if($message_sent):
+	?>
+
+	<h2>Thank you, we shall be in touch soon.</h2>
+
+	<?php
+		else:
+	?>
+
+	<section id="contact">
+	<div class="container-lg">
+		<div class="">
+			<h1 class="title">Contact Us</h1> 
+			<hr>
+			<div class="row justify-content-center my-5">
+				<div class="col-lg-6">
+					<form class="form" name="form" autocomplete="off" method="POST" action="contactus.php">
+								
+						<label class="form-label" for="name" style="color: white;">Name:</label>
+						<input class="form-control mb-2" id="name" type="text" name="name" required>  
+					  						
+						<label class="form-label mt-3" for="email" style="color: white;">Email Address: 
+						<span class="tooltip" data-tooltip="Please enter your email address">?</span></label>
+						<input class="form-control" id="email" type="email" placeholder="e.g. name:example.com" name="email" required>
+						<span id="email_address_error">*</span>
+
+						<label class="form-label" for="subject" style="color: white;">Subject:</label>
+						<input class="form-control mb-2" id="subject" type="text" name="subject"> 
+												
+						<div class="form-floating mb-5  mt-5">
+							<textarea id="query" class="form-control" name="message" spellcheck="true" style="height: 250px; overflow-y: visible;"></textarea>
+							<label for="query" class="textlab">Type your message here: <span class="tooltip" data-tooltip="Type your message here">?</span></label>
+						</div>
+						
+						<div class="form-floating mb-5  mt-5">
+							<textarea id="query" class="form-control" name="mark" spellcheck="true" style="height: 100px;"></textarea>
+							<label for="query" class="textlab">How did you hear about us?:<span class="tooltip" data-tooltip="Just a few words on how you found our website and heard about our club">?</span></label>
+						</div>
+						<p>
+							<!--Instert recaptcha here? -->
+						</p>
+						<div class="mb-4 text text-center">
+							<button type="submit" id="conbtn" class="btn btn-light btn-lg btn-block">Send Now!</button>
+						</div>
+					</form>
+				</div>
+			</div>	
+		</div>
+	</div>
+</section>
+
+<a href="https://en.wikipedia.org/wiki/Longship"><img src="images/vikinggif.gif" id="vikinganim" alt="row, row, row your boat" style="width: 300px; margin-left: 425px; margin-right: auto;"></a>
+
+</main>	
+
+<div class="bg-image"></div>	
+
+<footer>
+	<p id="foot_statement">Largs Model Boat Club &copy; 2022 | Designed & Developed by <a href="https://www.eassonweb.com" id="weblink"> EassonWeb.com</a></p><br>
+	<a href="https://en.wikipedia.org/wiki/International_maritime_signal_flags"><img src="images/LMBC_alphapng.png" id="LMBC_flags" style="width: 400px;"></a>
+	<div class="container-fluid">
+		<ul class="nav navbar-expand-sm" id="footer-menu">
+			<li class="nav-item">
+			    <a class="nav-link" href="gallery.html">Gallery</a>
+			</li>
+			<li class="nav-item">
+			    <a class="nav-link" href="history.html">History</a>
+			</li>
+			<li class="nav-item">
+			    <a class="nav-link" href="news.html">News & Events</a>
+			</li>
+			<li class="nav-item">
+			    <a class="nav-link" href="aboutlargs.html">About Largs</a>
+			</li>
+			<li class="nav-item">
+			    <a class="nav-link" href="index.html">Home</a>
+			</li>
+		</ul>
+	</div>
+</footer>	
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+	
+
+</script>
+
+</body>
+<!-- Add MODAL for when form has been submitted.  MODAL will include a button 'Click here to return to the homepage'. -->
+</html>
